@@ -59,7 +59,7 @@ PAM_EXTERN int pam_sm_authenticate( pam_handle_t *pamh, int flags,int argc, cons
 
 	const char* pUsername;
 	retval = pam_get_user(pamh, &pUsername, "Username: ");
-	if (retval != PAM_SUCCESS) {
+    if (retval != PAM_SUCCESS) {
         pam_syslog(pamh, LOG_ERR, "Pam_Clear: Couldn't get username from PAM stack");
 		return retval;
 	}
