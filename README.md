@@ -16,7 +16,7 @@ The argument goes, that in the days before sudo, the System Admin was persuaded 
 So by inventing sudo and requiring your own password, there was at least some control.
 
 If you search Github and beyond there are many other auth options.
-I choose to try, 
+I chose to try, 
 https://github.com/tiwe-de/libpam-pwdfile
 But the first password prompt passed the password to the second line - if they were not the same then auth was denied - they would need to be the same to get access, hence rather pointless.
 
@@ -26,4 +26,16 @@ See
 https://github.com/linux-pam/linux-pam/issues/364
 
 It's very confusing to get two password prompts, especially for sudo, but it does work.
+
+	$ sudo -i
+	[sudo] password for XXXX: 
+	[sudo] password for XXXX: 
+
+	May 11 00:41:46 u2104ab sudo[48697]: pam_clear(sudo:auth): Pam_Clear: Getting username from PAM stack
+	May 11 00:41:46 u2104ab sudo[48697]: pam_clear(sudo:auth): Pam_Clear: Username: XXXXX
+	May 11 00:41:46 u2104ab sudo[48697]: pam_clear(sudo:auth): Pam_Clear: Cleared both passwords.
+	May 11 00:41:50 u2104ab sudo[48697]:  XXXXX : TTY=pts/7 ; PWD=/root ; USER=root ; COMMAND=/bin/bash
+	May 11 00:41:50 u2104ab sudo[48697]: pam_clear(sudo:setcred): Pam_Clear: pam_sm_setcred not used
+	May 11 00:41:50 u2104ab sudo[48697]: pam_unix(sudo:session): session opened for user root by (uid=1000)
+
 
